@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Hitung Rata-rata Gula Darah</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1 class="mb-4">Hitung Rata-rata Gula Darah Harian</h1>
+      <form method="POST">
+        <div id="input-container">
+          <div class="form-group">
+            <label for="nilai_gula_darah">Masukkan Nilai Gula Darah:</label>
+            <input type="text" class="form-control" name="nilai_gula_darah">
+          </div>
+        </div>
+        <button type="button" class="btn btn-secondary mb-2" onclick="tambahInput()">Tambah Nilai</button>
+        <button type="submit" class="btn btn-primary mb-2">Hitung Rata-rata</button>
+      </form>
+      {% if rata_rata is not none %}
+      <div class="alert alert-info mt-4">
+        <strong>Rata-rata Gula Darah Harian:</strong> {{ rata_rata }} mg/dL<br>
+        <strong>Kategori:</strong> {{ kategori }}
+      </div>
+      {% elif error %}
+      <div class="alert alert-danger mt-4">
+        {{ error }}
+      </div>
+      {% endif %}
+    </div>
+
+    <script>
+      function tambahInput() {
+        var container = document.getElementById("input-container");
+        var input = document.createElement("input");
+        input.type = "text";
+        input.name = "nilai_gula_darah";
+        input.className = "form-control mt-2";
+        container.appendChild(input);
+      }
+    </script>
+  </body>
+</html>
